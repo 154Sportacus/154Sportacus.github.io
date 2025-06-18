@@ -51,10 +51,10 @@
   <header>
     <h1>33</h1>
     <nav>
-      <button onclick="showSection('Cocktails')" class="active">Cocktails</button>
-      <button onclick="showSection('Cervejas')">Beers</button>
-      <button onclick="showSection('Shots')">Wines</button>
-      <button onclick="showSection('Snacks')">Wines</button>
+      <button data-section="Cocktails" class="active">Cocktails</button>
+      <button data-section="Cervejas">Beers</button>
+      <button data-section="Shots">Shots</button>
+      <button data-section="Snacks">Snacks</button>
     </nav>
   </header>
   <main>
@@ -64,28 +64,35 @@
       <div class="item">Cuba Libre <span class="price">€9</span></div>
     </section>
     <section id="Cervejas">
-      <div class="item">Fino <span class="price">1.2€</span></div>
-      <div class="item">Balde <span class="price">2€</span></div>
-      <div class="item">Stout <span class="price">2€</span></div>
+      <div class="item">Fino <span class="price">€1.2</span></div>
+      <div class="item">Balde <span class="price">€2</span></div>
+      <div class="item">Stout <span class="price">€2</span></div>
     </section>
     <section id="Shots">
-      <div class="item">Jägermeister <span class="price">2€</span></div>
-      <div class="item">Absinto <span class="price">2€</span></div>
-      <div class="item"> <span class="price">2€</span></div>
+      <div class="item">Jägermeister <span class="price">€2</span></div>
+      <div class="item">Absinto <span class="price">€2</span></div>
+      <div class="item">Mystery Shot <span class="price">€2</span></div>
     </section>
     <section id="Snacks">
-      <div class="item">Tosta Atum <span class="price">4.5€</span></div>
-      <div class="item">Tosta Inglesa <span class="price">5€</span></div>
-      <div class="item">Tosta Mista <span class="price">3.5€</span></div>
+      <div class="item">Tosta Atum <span class="price">€4.5</span></div>
+      <div class="item">Tosta Inglesa <span class="price">€5</span></div>
+      <div class="item">Tosta Mista <span class="price">€3.5</span></div>
     </section>
   </main>
   <script>
-    function showSection(id) {
-      document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
-      document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
-      document.querySelector(`nav button[onclick*="${id}"]`).classList.add('active');
-    }
+    const buttons = document.querySelectorAll('nav button');
+
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        const id = button.dataset.section;
+
+        document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+
+        buttons.forEach(b => b.classList.remove('active'));
+        button.classList.add('active');
+      });
+    });
   </script>
 </body>
 </html>
