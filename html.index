@@ -52,7 +52,7 @@
     <h1>33</h1>
     <nav>
       <button data-section="Cocktails" class="active">Cocktails</button>
-      <button data-section="Cervejas">Beers</button>
+      <button data-section="Cervejas">Cervejas</button>
       <button data-section="Shots">Shots</button>
       <button data-section="Snacks">Snacks</button>
     </nav>
